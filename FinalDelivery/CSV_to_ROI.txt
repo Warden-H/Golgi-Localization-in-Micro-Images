@@ -1,0 +1,16 @@
+dir=getDir("")
+
+file_list=getFileList(dir)
+for(i=0;i<file_list.length;i++){
+	path = dir+file_list[i];
+	Table.open(path);
+	xpoints = Table.getColumn("X"); 
+	ypoints = Table.getColumn("Y");
+	makeSelection("polygon", xpoints, ypoints);
+	Roi.setName("ROI_" + i);
+	roiManager("Add");
+	selectWindow(file_list[i]);
+	run("Close");
+	
+}
+
